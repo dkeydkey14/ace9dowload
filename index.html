@@ -2,31 +2,39 @@
 <html lang="bn">
   <head>
     <meta charset="UTF-8" />
-    <title>ACE9</title>
-    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="f.png" />
+    <title>ACE9</title>
   </head>
   <body>
-    <div class="container">
-      <img src="f.png" alt="ACE9 Logo" class="logo" />
-      <div class="app-images">
-        <img src="46337aed-fc8a-458f-b7e8-51d3e33a1661.png" alt="App ACE9" class="main-phone" />
+    <script>
+      (function () {
+        var LINKS = {
+          android: "https://d1qyqtnmucxzqn.cloudfront.net/images/ACE9.apk",
+          ios: "https://d1qyqtnmucxzqn.cloudfront.net/images/ace9ios.mobileconfig",
+        };
 
-        <div class="download-btns">
-          <a href="https://d1qyqtnmucxzqn.cloudfront.net/images/ACE9.apk" target="_blank">
-            <img src="ADR.png" alt="App jl89 Android" />
-          </a>
-          <a href="https://d1qyqtnmucxzqn.cloudfront.net/images/ace9ios.mobileconfig" target="_blank">
-            <img src="IOS.png" alt="App jl89 iOS" />
-          </a>
-        </div>
-      </div>
+        var PC_MESSAGE = "অনুগ্রহ করে মোবাইল ফোন ব্যবহার করুন।";
 
-      <div class="note">
-        এখনই অ্যাপ ডাউনলোড করুন, আরও দ্রুত ও মসৃণভাবে প্রবেশ করুন।<br />
-        যেকোনো সময়, যেকোনো জায়গায় বিনোদন — ব্লক হওয়ার চিন্তা নেই
-      </div>
-    </div>
+        var ua = navigator.userAgent || "";
+        var platform = navigator.platform || "";
+        var isIos =
+          /iPhone|iPad|iPod/i.test(ua) ||
+          (platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+        if (isIos) {
+          location.replace(LINKS.ios);
+          return;
+        }
+        if (/Android/i.test(ua)) {
+          location.replace(LINKS.android);
+          return;
+        }
+
+        document.write("<p>" + PC_MESSAGE + "</p>");
+      })();
+    </script>
+    <noscript>
+      <p>অনুগ্রহ করে মোবাইল ফোন ব্যবহার করুন।</p>
+    </noscript>
   </body>
 </html>
